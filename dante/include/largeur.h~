@@ -1,0 +1,48 @@
+/*
+** EPITECH PROJECT, 2018
+** largeur.h
+** File description:
+** By DavidS
+*/
+
+#ifndef height_H_
+# define height_H_
+
+typedef struct	pos_s
+{
+  int		x;
+  int		y;
+}		pos_t;
+
+typedef struct	larg_s
+{
+  int		block;
+  pos_t		pos;
+  struct larg_s	*son;
+  struct larg_s	*dad;
+}		t_larg;
+
+typedef struct	first_s
+{
+  t_larg	*first;
+}		first_t;
+
+typedef struct	map_s
+{
+  int		width;
+  int		height;
+  char		**map;
+}		map_t;
+
+void		print_map(map_t *map);
+int		stock_map(map_t *map, char *av);
+int		get_map(map_t *map, char *av);
+int		add_to_the_list(first_t *f, t_larg *son, map_t *map);
+int		add_sons(first_t *f, t_larg *actual, map_t *map);
+t_larg		*get_next(first_t *f);
+int		height(first_t *f, map_t *map);
+int		not_already_in_list(first_t *f, t_larg *son);
+void		change_son_pos(t_larg *son, int y, int x);
+int		count_open(first_t *f);
+
+#endif /* !height_H_ */
